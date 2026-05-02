@@ -1,24 +1,26 @@
 pipeline{
-    agent any
+    agent any 
+
     environment {
-        PYTHON = 'C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe'
+        PYTHON = 'C:\\Python311\\python.exe'
     }
+
     stages{
         stage ('checkout code'){
-           steps{
+           steps {
             checkout scm
            } 
         }
 
         stage ('show python version'){
-            steps{
-            bat ${env.PYTHON} --version
+            steps {
+            bat "${env.PYTHON} --version"
             }
         }
 
         stage ('run extract.py'){
             steps{
-                bat ${env.PYTHON} extract.py
+                bat "${env.PYTHON} extract.py"
             }
         }
     }
